@@ -2224,6 +2224,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/dateformat@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/dateformat/-/dateformat-3.0.1.tgz#98d747a2e5e9a56070c6bf14e27bff56204e34cc"
+  integrity sha512-KlPPdikagvL6ELjWsljbyDIPzNCeliYkqRpI+zea99vBBbCIA5JNshZAwQKTON139c87y9qvTFVgkFd14rtS4g==
+
 "@types/eslint@^7.2.6":
   version "7.2.11"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.11.tgz#180b58f5bb7d7376e39d22496e2b08901aa52fd2"
@@ -3154,6 +3159,15 @@ axe-core@^4.0.2:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.1.tgz#2e50bcf10ee5b819014f6e342e41e45096239e34"
   integrity sha512-evY7DN8qSIbsW2H/TWQ1bX3sXN1d4MNb5Vb4n7BzPuCwRHdkZ1H2eNLuSh73EoQqkGKUtju2G2HCcjCfhvZIAA==
+
+axios-logger@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/axios-logger/-/axios-logger-2.5.0.tgz#4e5d354241a693982ddb0ae80d33ea4d6a2ffa2d"
+  integrity sha512-xNBuDMJlEisoy0AvHyj1F+biEAMT4i8EJZV/r0kCAyXFEoH0lUTo7TOrDhXZaYjgMfS5OZvAKc3azEggqFSz4Q==
+  dependencies:
+    "@types/dateformat" "^3.0.1"
+    chalk "^4.1.0"
+    dateformat "^3.0.3"
 
 axios@^0.21.1:
   version "0.21.1"
@@ -4599,6 +4613,11 @@ date-and-time@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-1.0.0.tgz#0062394bdf6f44e961f0db00511cb19cdf3cc0a5"
   integrity sha512-477D7ypIiqlXBkxhU7YtG9wWZJEQ+RUpujt2quTfgf4+E8g5fNUkB0QIL0bVyP5/TKBg8y55Hfa1R/c4bt3dEw==
+
+dateformat@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
+  integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
