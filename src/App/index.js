@@ -1,17 +1,20 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import AppHeader from "../Components/AppHeader";
 import Admin from "../Containers/Admin";
+import NewUser from "../Containers/NewUser";
 
 function App() {
-  const openCreateUserModal = () => {
-    // Open a modal to create a user
-  };
-
   return (
-    <div className="App">
-      <AppHeader onCreateUserTap={openCreateUserModal} />
-      <Admin />
-    </div>
+    <Router>
+      <AppHeader />
+      <Switch>
+        <Route path="/admin" component={Admin} />
+        <Route path="/newUser" component={NewUser} />
+        <Route path="/" component={Admin} />
+      </Switch>
+    </Router>
   );
 }
 

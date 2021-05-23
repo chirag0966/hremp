@@ -1,13 +1,15 @@
 import React from "react";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { useHistory } from "react-router";
 
 import useStyles from "./styles";
 
-const AppHeader = ({ onCreateUserTap }) => {
+const AppHeader = () => {
   const classes = useStyles();
+  const history = useHistory();
 
   const handleCreateUserTap = () => {
-    onCreateUserTap();
+    history.push("/newUser");
   };
 
   return (
