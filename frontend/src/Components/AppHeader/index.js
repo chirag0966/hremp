@@ -15,7 +15,11 @@ const AppHeader = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography
+          variant="h6"
+          className={classes.title}
+          onClick={() => history.push("/")}
+        >
           DigiBea
         </Typography>
         <Button variant="contained" onClick={handleCreateUserTap}>

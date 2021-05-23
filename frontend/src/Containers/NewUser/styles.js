@@ -12,10 +12,15 @@ const useStyles = makeStyles({
     padding: "2rem",
     width: "60vw",
   },
+  cardLine: {},
   inputFilelds: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+  },
+  linearProgress: {
+    borderBottomLeftRadius: "5px",
+    borderBottomRightRadius: "5px",
   },
   inputField: {
     "& input": {
