@@ -6,9 +6,10 @@ import Admin from "../Containers/Admin";
 import Login from "../Containers/Login";
 import NewUser from "../Containers/NewUser";
 import AuthContext from "../Services/Auth/AuthContext";
+import { AUTH_DEFAULT_VALUE } from "../Services/Auth";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(AUTH_DEFAULT_VALUE);
 
   return (
     <Router>

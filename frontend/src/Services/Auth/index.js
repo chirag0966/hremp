@@ -13,23 +13,29 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const auth = firebase.auth();
+
+const AUTH_DEFAULT_VALUE = {
+  user: auth.currentUser,
+  setUser: (user) => {},
+};
+
 const login = ({ email, password }) => {
-  return firebase
-    .auth()
+  return auth
     .signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      debugger;
-      return userCredential.user;
-    })
+    .then((userCredential) => userCredential.user)
     .catch((error) => console.error(error));
 };
 
 const logout = () => {
-  return firebase
-    .auth()
+  return auth
     .signOut()
     .then(() => {})
     .catch((error) => console.error(error));
 };
 
-export { login, logout };
+const getIdToken = () => {
+  return auth.currentUser?.getIdToken();
+};
+
+export { login, logout, getIdToken, AUTH_DEFAULT_VALUE };

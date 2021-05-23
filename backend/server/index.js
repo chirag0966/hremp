@@ -16,4 +16,4 @@ app.listen(PORT, () => {
 });
 
 app.post("/user", createUser);
-app.get("/users", getUsers);
+app.post("/users", getUsers);
