@@ -5,8 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import useStyles from "./styles";
-import { AppBar } from "@material-ui/core";
-import { getUsers } from "../../Services/User";
+import { getUsers } from "../../Services/Network/APIs/User";
 
 const Admin = () => {
   const classes = useStyles();
@@ -18,7 +17,6 @@ const Admin = () => {
 
   return (
     <>
-      <AppBar></AppBar>
       <List className={classes.root}>
         {users.map((user) => (
           <div key={user.uid}>

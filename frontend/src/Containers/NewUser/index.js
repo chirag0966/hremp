@@ -10,7 +10,7 @@ import {
 
 import useStyles from "./styles";
 import { Keys } from "../../Constants";
-import { createUser } from "../../Services/User";
+import { createUser } from "../../Services/Network/APIs/User";
 
 const InputField = ({ label, id }) => {
   const classes = useStyles();

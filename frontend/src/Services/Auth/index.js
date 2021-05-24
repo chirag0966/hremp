@@ -11,31 +11,31 @@ const firebaseConfig = {
   measurementId: "G-N8Z13GHSSH",
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
 
-const auth = firebase.auth();
-
-const AUTH_DEFAULT_VALUE = {
-  user: auth.currentUser,
+const AUTH_DEFAULT_VALUE = () => ({
+  user: null,
   setUser: (user) => {},
-};
+});
 
 const login = ({ email, password }) => {
-  return auth
+  return firebase
+    .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => userCredential.user)
     .catch((error) => console.error(error));
 };
 
 const logout = () => {
-  return auth
+  return firebase
+    .auth()
     .signOut()
     .then(() => {})
     .catch((error) => console.error(error));
 };
 
-const getIdToken = () => {
-  return auth.currentUser?.getIdToken();
-};
-
-export { login, logout, getIdToken, AUTH_DEFAULT_VALUE };
+export { firebase, login, logout, AUTH_DEFAULT_VALUE };

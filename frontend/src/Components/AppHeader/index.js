@@ -25,10 +25,6 @@ const AppHeader = () => {
       .catch(console.error);
   };
 
-  const handleLoginTap = () => {
-    history.push("/login");
-  };
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -39,7 +35,7 @@ const AppHeader = () => {
         >
           DigiBea
         </Typography>
-        {user ? (
+        {user && (
           <>
             <Button variant="contained" onClick={handleCreateUserTap}>
               Add User
@@ -48,10 +44,6 @@ const AppHeader = () => {
               <PowerSettingsNew color="secondary" size={60} />
             </Button>
           </>
-        ) : (
-          <Button variant="contained" onClick={handleLoginTap}>
-            Login
-          </Button>
         )}
       </Toolbar>
     </AppBar>
