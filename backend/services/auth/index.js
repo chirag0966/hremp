@@ -2,6 +2,7 @@ const admin = require("firebase-admin");
 const { of } = require("await-of");
 
 const serviceAccount = require("./serviceAccount.json");
+const { sendEmail } = require("../mail");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -40,18 +41,6 @@ const isValidRequest = async (req, res) => {
   }
 };
 
-const sendPasswordResetEmailToNewUser = async (email) => {
-  const [emailSent, error] = await of(
-    admin.auth().generatePasswordResetLink(email)
-  );
-  if (emailSent) {
-    console.log(emailSent);
-  }
-  if (error) {
-    console.error(error);
-  }
-};
-
 const createUser = async (req, res) => {
   await isValidRequest(req, res);
 
@@ -72,7 +61,7 @@ const createUser = async (req, res) => {
     return;
   }
 
-  sendPasswordResetEmailToNewUser(email);
+  sendEmail(email);
 
   res.json({ message: "User created successfully!", data: user });
 };
