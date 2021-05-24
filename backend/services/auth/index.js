@@ -40,23 +40,41 @@ const isValidRequest = async (req, res) => {
   }
 };
 
+const sendPasswordResetEmailToNewUser = async (email) => {
+  const [emailSent, error] = await of(
+    admin.auth().generatePasswordResetLink(email)
+  );
+  if (emailSent) {
+    console.log(emailSent);
+  }
+  if (error) {
+    console.error(error);
+  }
+};
+
 const createUser = async (req, res) => {
   await isValidRequest(req, res);
 
   const { firstName, lastName, email } = req.body;
 
-  admin
-    .auth()
-    .createUser({
+  const [user, userCreationError] = await of(
+    admin.auth().createUser({
       email,
       displayName: firstName + " " + lastName,
     })
-    .then((data) => {
-      res.json({ message: "User created successfully!", data });
-    })
-    .catch((error) => {
-      res.json({ message: "User could not be created", error });
+  );
+
+  if (userCreationError) {
+    res.json({
+      message: "User could not be created",
+      error: userCreationError,
     });
+    return;
+  }
+
+  sendPasswordResetEmailToNewUser(email);
+
+  res.json({ message: "User created successfully!", data: user });
 };
 
 const getUsers = async (req, res) => {
