@@ -37,9 +37,11 @@ const AppHeader = () => {
         </Typography>
         {user && (
           <>
-            <Button variant="contained" onClick={handleCreateUserTap}>
-              Add User
-            </Button>
+            {user.claims?.admin && (
+              <Button variant="contained" onClick={handleCreateUserTap}>
+                Add User
+              </Button>
+            )}
             <Button variant="text" onClick={handleLogoutTap}>
               <PowerSettingsNew color="secondary" size={60} />
             </Button>
