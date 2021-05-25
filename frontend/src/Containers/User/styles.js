@@ -13,19 +13,24 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
-  button: {
-    marginTop: "2rem",
-    width: "100%",
-  },
   punchContainer: {
     display: "flex",
-    width: "20vw",
-    justifyContent: "space-around",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  button: {
+    marginTop: "2rem",
+    width: "50%",
+  },
+  timeContainer: {
+    display: "flex",
+    width: "26vw",
+    justifyContent: "space-evenly",
   },
   time: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
+    alignItems: "center",
   },
 });
 
