@@ -3,6 +3,7 @@ export const Keys = {
   lastName: "lastName",
   email: "email",
   password: "password",
+  idToken: "idToken",
 };
 
 export const Strings = {
