@@ -21,9 +21,7 @@ const Admin = () => {
         {users.map((user) => (
           <div key={user.uid}>
             <ListItem alignItems="flex-start">
-              <ListItemText primary={user.displayName} />
-              <ListItemText primary={user.email} />
-              <ListItemText secondary={user.uid} />
+              <ListItemText primary={user.displayName} secondary={user.email} />
             </ListItem>
             <Divider variant="fullWidth" component="li" />
           </div>

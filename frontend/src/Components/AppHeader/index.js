@@ -33,7 +33,7 @@ const AppHeader = () => {
           className={classes.title}
           onClick={() => history.push("/")}
         >
-          DigiBea
+          HREmp
         </Typography>
         {user && (
           <>

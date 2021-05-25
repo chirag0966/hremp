@@ -22,11 +22,6 @@ const useStyles = makeStyles({
     borderBottomLeftRadius: "5px",
     borderBottomRightRadius: "5px",
   },
-  inputField: {
-    "& input": {
-      textAlign: "center",
-    },
-  },
   form: {
     width: "100%",
     display: "flex",
