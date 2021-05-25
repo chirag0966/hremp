@@ -15,6 +15,7 @@ const User = () => {
   function handlePunch() {
     if (inTime) {
       setOutTime(Date.now());
+      return;
     }
     setInTime(Date.now());
   }

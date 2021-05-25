@@ -1,33 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router";
+import jwt_decode from "jwt-decode";
 
-import { firebase } from "../../Services/Auth";
+import Firebase from "../../Services/Firebase";
 import axiosClient from "../../Services/Network";
 import AuthContext from "../../Services/Auth/AuthContext";
 import useStyles from "./styles";
+import { Keys } from "../../Constants";
 
 const Initial = () => {
   const history = useHistory();
   const [initialising, setInitialising] = useState(true);
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setIsAdmin } = useContext(AuthContext);
   const classes = useStyles();
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onIdTokenChanged((user) => {
+    const unsubscribe = Firebase.auth().onIdTokenChanged((user) => {
       if (user) {
         user.getIdToken().then((idToken) => {
-          axiosClient.defaults.headers.common["idToken"] = idToken;
+          axiosClient.defaults.headers.common[Keys.idToken] = idToken;
+          const decoded = jwt_decode(idToken);
           setUser(user);
+          setIsAdmin(decoded.admin);
           setInitialising(false);
-          if (user.claims?.admin) {
+          if (decoded.admin) {
             history.push("/admin");
           } else {
             history.push("/user");
           }
         });
       } else {
-        setUser(null);
         setInitialising(false);
         history.push("/login");
       }
@@ -36,7 +39,7 @@ const Initial = () => {
     return () => {
       unsubscribe();
     };
-  }, [history, setUser]);
+  }, [history, setUser, setIsAdmin]);
 
   return (
     <div className={classes.container}>

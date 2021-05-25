@@ -13,10 +13,11 @@ import User from "../Containers/User";
 
 function App() {
   const [user, setUser] = useState(AUTH_DEFAULT_VALUE().user);
+  const [isAdmin, setIsAdmin] = useState(AUTH_DEFAULT_VALUE().isAdmin);
 
   return (
     <Router>
-      <AuthContext.Provider value={{ user, setUser }}>
+      <AuthContext.Provider value={{ user, setUser, isAdmin, setIsAdmin }}>
         <AppHeader />
         <Switch>
           <Route exact path="/login" component={Login} />

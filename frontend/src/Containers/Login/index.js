@@ -1,11 +1,10 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { Button, Card, LinearProgress } from "@material-ui/core";
 
 import useStyles from "./styles";
 import { Keys } from "../../Constants";
 import { login } from "../../Services/Auth";
-import AuthContext from "../../Services/Auth/AuthContext";
 import InputField from "../../Components/InputField";
 
 const Login = () => {
@@ -13,7 +12,6 @@ const Login = () => {
   const classes = useStyles();
   const history = useHistory();
   const [inProgress, setInProgress] = useState(false);
-  const { setUser } = useContext(AuthContext);
 
   const loginUser = (e) => {
     e.preventDefault();
@@ -25,7 +23,6 @@ const Login = () => {
 
     login({ email, password })
       .then((user) => {
-        setUser(user);
         setInProgress(false);
         history.push("/");
       })

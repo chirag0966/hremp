@@ -10,7 +10,7 @@ import { logout } from "../../Services/Auth";
 const AppHeader = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, isAdmin, setIsAdmin } = useContext(AuthContext);
 
   const handleCreateUserTap = () => {
     history.push("/newUser");
@@ -20,6 +20,7 @@ const AppHeader = () => {
     logout()
       .then(() => {
         setUser(null);
+        setIsAdmin(false);
         history.push("/login");
       })
       .catch(console.error);
@@ -37,7 +38,7 @@ const AppHeader = () => {
         </Typography>
         {user && (
           <>
-            {user.claims?.admin && (
+            {isAdmin && (
               <Button variant="contained" onClick={handleCreateUserTap}>
                 Add User
               </Button>
