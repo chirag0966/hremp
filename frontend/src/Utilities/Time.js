@@ -5,4 +5,8 @@ const punchTimeDisplay = (timestamp) => {
   return timeObj.isValid() ? timeObj.format("hh:mm") : null;
 };
 
-export { punchTimeDisplay };
+const getDayString = () => {
+  return dayjs().format("DD-MM-YYYY");
+};
+
+export { punchTimeDisplay, getDayString };

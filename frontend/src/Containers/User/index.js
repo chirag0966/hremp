@@ -1,16 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, CardContent, Typography } from "@material-ui/core";
 
 import AuthContext from "../../Services/Auth/AuthContext";
 import useStyles from "./styles";
 import { punchTimeDisplay } from "../../Utilities/Time";
 import { Strings } from "../../Constants";
+import { addEntry, getEntries } from "../../Services/Store";
 
 const User = () => {
   const classes = useStyles();
   const { user } = useContext(AuthContext);
   const [inTime, setInTime] = useState(null);
   const [outTime, setOutTime] = useState(null);
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    getEntries().then((_entries) => setLogs(_entries));
+  }, []);
+
+  useEffect(() => {
+    if (inTime !== null && outTime !== null) {
+      addEntry(inTime, outTime).then(() => {
+        setInTime(null);
+        setOutTime(null);
+        getEntries().then((_entries) => setLogs(_entries));
+      });
+    }
+  }, [inTime, outTime]);
 
   function handlePunch() {
     if (inTime) {
@@ -56,6 +72,29 @@ const User = () => {
             {inTime ? Strings.out : Strings.in}
           </Button>
         </CardContent>
+      </Card>
+      <Card className={classes.entriesCard}>
+        {Object.keys(logs).map((day) => (
+          <div key={day}>
+            <div>
+              <Typography color="primary" variant="h6">
+                {day}
+              </Typography>
+            </div>
+            {logs[day].map((_entry) => (
+              <Typography
+                color="textSecondary"
+                key={_entry.inTime + "" + _entry.outTime}
+                variant="subtitle1"
+              >
+                {`${punchTimeDisplay(_entry.inTime)} to ${punchTimeDisplay(
+                  _entry.outTime
+                )}`}
+              </Typography>
+            ))}
+            <br />
+          </div>
+        ))}
       </Card>
     </div>
   );

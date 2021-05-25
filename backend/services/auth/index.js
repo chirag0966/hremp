@@ -25,7 +25,7 @@ const isValidRequest = async (req, res) => {
     return true;
   } else if (claims && claims.email === "admin@hremp.com") {
     const [success] = await of(
-      admin.auth().setCustomUserClaims(claims.uid, { admin: true })
+      admin.auth().setCustomUserClaims(claims.user_id, { admin: true })
     );
 
     if (success) {

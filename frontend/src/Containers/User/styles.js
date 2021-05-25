@@ -6,8 +6,11 @@ const useStyles = makeStyles({
     width: "100%",
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
   card: {
+    marginTop: "1rem",
     padding: "1rem",
     width: "80vw",
     display: "flex",
@@ -31,6 +34,13 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+  },
+  entriesCard: {
+    margin: "2rem 0",
+    padding: "1rem",
+    width: "80vw",
+    display: "flex",
+    justifyContent: "space-evenly",
   },
 });
 
