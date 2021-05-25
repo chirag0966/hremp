@@ -4,3 +4,9 @@ export const Keys = {
   email: "email",
   password: "password",
 };
+
+export const Strings = {
+  out: "Out",
+  in: "In",
+  punchTimePlaceholder: "_ _ : _ _",
+};
