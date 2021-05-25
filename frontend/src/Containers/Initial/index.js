@@ -20,7 +20,11 @@ const Initial = () => {
           axiosClient.defaults.headers.common["idToken"] = idToken;
           setUser(user);
           setInitialising(false);
-          history.push("/admin");
+          if (user.claims?.admin) {
+            history.push("/admin");
+          } else {
+            history.push("/user");
+          }
         });
       } else {
         setUser(null);
