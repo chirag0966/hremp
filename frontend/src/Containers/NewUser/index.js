@@ -1,28 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
-import {
-  Button,
-  Card,
-  FormControl,
-  Input,
-  LinearProgress,
-} from "@material-ui/core";
+import { Button, Card, LinearProgress } from "@material-ui/core";
 
 import useStyles from "./styles";
 import { Keys } from "../../Constants";
 import { createUser } from "../../Services/Network/APIs/User";
-
-const InputField = ({ label, id }) => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.inputField}>
-      <FormControl>
-        <Input id={id} placeholder={label} />
-      </FormControl>
-    </div>
-  );
-};
+import InputField from "../../Components/InputField";
 
 const NewUser = () => {
   const formRef = useRef();
