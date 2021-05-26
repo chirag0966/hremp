@@ -4,10 +4,8 @@ import { useHistory } from "react-router";
 import jwt_decode from "jwt-decode";
 
 import Firebase from "../../Services/Firebase";
-import axiosClient from "../../Services/Network";
 import AuthContext from "../../Services/Auth/AuthContext";
 import useStyles from "./styles";
-import { Keys } from "../../Constants";
 
 const Initial = () => {
   const history = useHistory();
@@ -19,7 +17,6 @@ const Initial = () => {
     const unsubscribe = Firebase.auth().onIdTokenChanged((user) => {
       if (user) {
         user.getIdToken().then((idToken) => {
-          axiosClient.defaults.headers.common[Keys.idToken] = idToken;
           const decoded = jwt_decode(idToken);
           setUser(user);
           setIsAdmin(decoded.admin);
